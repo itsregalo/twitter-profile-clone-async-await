@@ -31,5 +31,18 @@ class UserProfile {
         return posts;
     }
 
+    static async createPost(data) {
+        const response = await fetch('/api/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        });
+        const post = await response.json();
+        return post;
+    }
     
+
+
 }
