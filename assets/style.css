@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -25,4 +30,15 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+}
+
+.body {
+    padding: 0px 20px 0px 20px;
+}
+
+.content {
+    margin-top : 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
