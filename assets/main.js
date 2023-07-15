@@ -49,12 +49,19 @@ class UserProfile {
     static async getPosts(userId) {
         const response = await fetch(`http://localhost:3000/posts?userId=${userId}`);
         const posts = await response.json();
+        const comments = document.getElementById('comments');
+        console.log(comments.length);
+
+        if (comments.length == undefined) {
+            this.getPostComments(posts[0].id);
+        }
+
 
         posts.forEach((item,index)=>{
             userPosts.innerHTML += `
                 <div class="singlePost" onclick="UserProfile.getPostComments(${item.id})">
                     <div class="title">
-                        <h3>${item.title}</h3>
+                        <h3>${index+1} ${item.title}</h3>
                     </div>
                     <div class="body">
                         <p>${item.body}</p>
