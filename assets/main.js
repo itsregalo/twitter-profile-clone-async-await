@@ -59,19 +59,44 @@ class UserProfile {
 
         posts.forEach((item,index)=>{
             userPosts.innerHTML += `
-                <div id="singlePost" class="singlePost" onclick="UserProfile.getPostComments(${item.id})">
-                    <div class="postImage">
-                        <img src="https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg" alt="" width="10%>
+                <div class="singlePost" onclick="UserProfile.getPostComments(${item.id})">
+                  
+                    <div class="post-image">
+                        <img src="https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg" alt="" width="100px" >
                     </div>
                     
-                    <div class="postText">
+                  
+                    <div class="postBody">
                         <div class="title">
-                            <h3>${index+1} ${item.title}</h3>
+                            <h3>${item.title}
+                            <span>
+                                <img src="/assets/images/icons/003-verified.png"/>
+                                <img src="/assets/images/icons/twitter.png"/>
+                            </span>
+                            </h3>
                         </div>
                         <div class="post-body">
                             <p>${item.body}</p>
                         </div>
+                        <hr>
+                        <div class="post-stats">
+                            <div class="post-comments">
+                                <img src="/assets/images/icons/001-comment.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                            <div class="post-retweets">
+                                <img src="/assets/images/icons/004-repost.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                            <div class="post-likes">
+                                <img src="/assets/images/icons/006-heart-1.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                        </div>
                     </div>
+
+                    
+                 
                 </div>
                 `
         })
@@ -94,17 +119,46 @@ class UserProfile {
         const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post_id}`);
         const comments = await response.json();
         const commentList = document.getElementById('comments');
+        const postNumber = document.getElementById('postNumber');
+        postNumber.innerHTML = `Post ${post_id}`;
         commentList.innerHTML = '';
         comments.forEach((item,index)=>{
             commentList.innerHTML += `
                 <div class="singleComment">
-                    <div class="commentName" id="commentName">
-                        <p><b>${item.name}</b></p>
+                    <div class="comment-image">
+                        <img src="https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg" alt="" width="100px" >
                     </div>
-                    <div class="commentBody" id="commentBody">
-                        <p>${item.body}</p>
+
+                    <div class="comment-body">
+                        <div class="commentName" id="commentName">
+                            <p><b>${item.name}</b>
+                            <span>
+                                <img src="/assets/images/icons/003-verified.png"/>
+                                <img src="/assets/images/icons/twitter.png"/>
+                            </span>
+                            </p>
+                        </div>
+                        <div class="commentBody" id="commentBody">
+                            <p>${item.body}</p>
+                        </div>
+                        <hr>
+                        <div class="post-stats">
+                            <div class="post-comments">
+                                <img src="/assets/images/icons/001-comment.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                            <div class="post-retweets">
+                                <img src="/assets/images/icons/004-repost.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                            <div class="post-likes">
+                                <img src="/assets/images/icons/006-heart-1.png" alt="" width="20px">
+                                <span>0</span>
+                            </div>
+                        </div>
                     </div>
-                    </div>
+
+                     
                 </div>
                 `
         })
