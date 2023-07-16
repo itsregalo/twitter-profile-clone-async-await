@@ -32,7 +32,7 @@ class UserProfile {
         profileName.innerHTML = profile.name;
         username.innerHTML = profile.username;
         userWeb.innerHTML = profile.website;
-        userBio.innerHTML = profile.bio;
+        userBio.innerHTML = profile.company.catchPhrase;
         userLocation.innerHTML = profile.address.city;
 
         this.getPosts(profile.id);
@@ -64,8 +64,6 @@ class UserProfile {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
         const posts = await response.json();
         const comments = document.getElementById('comments');
-        console.log(comments.length);
-
         if (comments.length == undefined) {
             this.getPostComments(posts[0].id);
         }
@@ -184,3 +182,24 @@ class UserProfile {
 
 }
 UserProfile.getUsers();
+
+
+// get value from select
+try{
+    selectUser.addEventListener('change', (e)=>{
+        UserProfile.getProfile(e.target.value);
+    }
+    )
+} catch(err){
+    console.log(err);
+}
+
+// load first user profile on page load
+try{
+    window.addEventListener('load', ()=>{
+        UserProfile.getProfile(1);
+    })
+}
+catch(err){
+    console.log(err);
+}
