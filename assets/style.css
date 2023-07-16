@@ -33,7 +33,7 @@ header {
 }
 
 .body {
-    padding: 0px 20px 0px 20px;
+    padding: 50px 20px 0px 20px;
 }
 
 .content {
@@ -41,4 +41,34 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px;
 }
+
+#userImage {
+    border-radius: 50%;
+}
+
+.userPosts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#singlePost {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.singleComment {
+    display: flex;
+    flex-direction: column;
+}
+
+

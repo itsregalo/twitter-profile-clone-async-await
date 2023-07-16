@@ -11,10 +11,10 @@ let singlePost = document.getElementById('singlePost');
 
 class UserProfile {
     static async getProfile() {
-        const response = await fetch('http://localhost:3000/users/5');
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/5');
         const profile = await response.json();
 
-        userImage.src = profile.dp;
+        userImage.src = 'https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg'
         profileName.innerHTML = profile.name;
         username.innerHTML = profile.username;
         userWeb.innerHTML = profile.website;
@@ -47,7 +47,7 @@ class UserProfile {
     }
 
     static async getPosts(userId) {
-        const response = await fetch(`http://localhost:3000/posts?userId=${userId}`);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
         const posts = await response.json();
         const comments = document.getElementById('comments');
         console.log(comments.length);
@@ -59,12 +59,18 @@ class UserProfile {
 
         posts.forEach((item,index)=>{
             userPosts.innerHTML += `
-                <div class="singlePost" onclick="UserProfile.getPostComments(${item.id})">
-                    <div class="title">
-                        <h3>${index+1} ${item.title}</h3>
+                <div id="singlePost" class="singlePost" onclick="UserProfile.getPostComments(${item.id})">
+                    <div class="postImage">
+                        <img src="https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg" alt="" width="10%>
                     </div>
-                    <div class="body">
-                        <p>${item.body}</p>
+                    
+                    <div class="postText">
+                        <div class="title">
+                            <h3>${index+1} ${item.title}</h3>
+                        </div>
+                        <div class="post-body">
+                            <p>${item.body}</p>
+                        </div>
                     </div>
                 </div>
                 `
