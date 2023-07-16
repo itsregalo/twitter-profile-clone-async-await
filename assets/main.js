@@ -8,10 +8,24 @@ let userLocation = document.getElementById('exactLocation');
 let userImage = document.getElementById('userImage');
 let userPosts = document.getElementById('userPosts');
 let singlePost = document.getElementById('singlePost');
+let selectUser = document.getElementById('selectuser');
 
 class UserProfile {
-    static async getProfile() {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users/5');
+    static async getUsers() {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json();
+
+        users.forEach((user,index)=>{
+            let option = document.createElement('option');
+            option.value = user.id;
+            option.innerHTML = user.name;
+            selectUser.appendChild(option);
+        })
+        return users;
+    }
+
+    static async getProfile(userId) {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/'+userId);
         const profile = await response.json();
 
         userImage.src = 'https://pbs.twimg.com/profile_images/1393545124240625665/qM05LJ9h_400x400.jpg'
@@ -169,6 +183,4 @@ class UserProfile {
 
 
 }
-
-UserProfile.getProfile();
-
+UserProfile.getUsers();

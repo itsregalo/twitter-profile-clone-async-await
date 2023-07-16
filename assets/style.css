@@ -113,3 +113,40 @@ header {
     flex-direction: column;
     gap: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .userPosts {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .singlePost {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .singleComment {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .comment-body {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
