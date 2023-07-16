@@ -11,6 +11,7 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: rgb(0, 162, 255);
+    padding: 0px 50px 0px 50px;
 }
 
 .header {
@@ -24,9 +25,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-decoration: none;
     list-style: none;
     gap: 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
 }
 
 .search {
